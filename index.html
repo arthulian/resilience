@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtue & Resilience</title>
+    <style>
+
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --bg-color: #f4f4f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --secondary-text: #555555;
+    /* custom colors to distinguish headings and bullet labels */
+    --h1-color: #2c3e50;   /* dark navy for main title */
+    --h2-color: #8e44ad;   /* deep purple for section headings */
+    --h3-color: #16a085;   /* teal green for sub-section titles */
+    --bullet-first-color: #e67e22; /* bright orange for first word / labels */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Stronger contrast between the big sections (I, II, III) */
+section {
+    margin: 40px 0;
+    padding: 24px 24px 28px;
+    border-radius: 10px;
+}
+
+section:nth-of-type(1) {
+    background: #fff7f2;            /* warm */
+    border: 1px solid #f3c7a9;
+}
+
+section:nth-of-type(2) {
+    background: #f2f7ff;            /* cool blue */
+    border: 1px solid #b6c9f1;
+}
+
+section:nth-of-type(3) {
+    background: #f3fff6;            /* soft green */
+    border: 1px solid #b6e3c4;
+}
+
+h1 {
+    text-align: center;
+    color: var(--h1-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: var(--h2-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+    font-size: 1.6rem;
+}
+
+h3 {
+    color: var(--h3-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.section-card {
+    background: #ffffff; /* white cards on tinted section backgrounds */
+    border-left: 4px solid var(--accent-color);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    padding: 18px 18px 16px;
+    margin-bottom: 18px;
+}
+
+ul {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* First word / labels in bullets stand out */
+strong {
+    color: var(--bullet-first-color);
+    font-weight: 700;
+}
+
+/* Layout helper for cycle-step rows (if present) */
+.cycle-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.cycle-step strong {
+    min-width: 90px;
+    display: inline-block;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+    section {
+        padding: 18px 16px 22px;
+    }
+}
+
+/* === Collapsible subsections (only affects cards with an <h3>) === */
+.section-card h3 {
+    cursor: pointer;
+    position: relative;
+    padding-right: 28px;   /* space for the + / - icon */
+}
+
+/* Icon on the right of each subsection title */
+.section-card h3::after {
+    content: "−";          /* shown when expanded */
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* When collapsed, change icon to + */
+.section-card.collapsed h3::after {
+    content: "+";
+}
+
+/* Hide everything in the card except the h3 when collapsed */
+.section-card.collapsed > *:not(h3) {
+    display: none;
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Virtue & Resilience</h1>
+
+    <section>
+        <h2>I. External Control: Threats & Responses</h2>
+
+        <div class="section-card">
+            <h3>1. Cognitive Manipulation</h3>
+            <ul>
+                <li><strong>Mechanism:</strong> Distorts reality through gaslighting and information control.</li>
+                <li><strong>Psychological Impact:</strong>
+                    <ul>
+                        <li>Erodes self-trust, causing confusion and chronic stress.</li>
+                        <li>Prolonged stress from this manipulation can trigger fatigue and shutdown.</li>
+                    </ul>
+                </li>
+                <li><strong>Failure Mode:</strong> Belief that protecting the other person’s feelings or relationship stability justifies hiding the truth.</li>
+                <li><strong>Resilience Response:</strong> Commit to reality-checking with third parties or written facts when doubt arises.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>2. Nested Consent & Overload</h3>
+            <ul>
+                <li><strong>Mechanism:</strong> Uses layered or hidden commitments to ensure compliance, such as slowly escalating asks.</li>
+                <li><strong>Psychological Impact:</strong>
+                    <ul>
+                        <li>Induces obligation without clarity or explicit agreement.</li>
+                        <li>Leads to guilt, self-blame, and emotional exhaustion.</li>
+                    </ul>
+                </li>
+                <li><strong>Failure Mode:</strong> Rationalizing increased demands as “necessary” or “for their own good.”</li>
+                <li><strong>Resilience Response:</strong> Explicitly pause to ask “What exactly am I agreeing to?” and “Would I still agree if everything were stated clearly at once?”</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>3. Cognitive Hazards & Dependency Loops</h3>
+            <ul>
+                <li><strong>Mechanism:</strong> Introduces ideas, symbols, or narratives that are hard to escape, creating loops of rumination or dependency.</li>
+                <li><strong>Psychological Impact:</strong>
+                    <ul>
+                        <li>Creates fear of leaving the system or relationship.</li>
+                        <li>Reinforces helplessness and external locus of control.</li>
+                    </ul>
+                </li>
+                <li><strong>Failure Mode:</strong> Using a person’s vulnerabilities or unresolved trauma as leverage.</li>
+                <li><strong>Resilience Response:</strong> Name the pattern explicitly: “This thought keeps me stuck rather than moving toward a solution.”</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>4. Threatened Freedom of Thought</h3>
+            <ul>
+                <li><strong>Mechanism:</strong> Penalizes disagreement or independent thinking.</li>
+                <li><strong>Psychological Impact:</strong>
+                    <ul>
+                        <li>Trains suppression of intuition and critical thought.</li>
+                        <li>Generates chronic anxiety around “thinking wrong.”</li>
+                    </ul>
+                </li>
+                <li><strong>Failure Mode:</strong> Enforcing loyalty tests or demanding ideological purity.</li>
+                <li><strong>Resilience Response:</strong> Create internal “free zones” where all thoughts can be written down without self-censorship.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>II. Ten Virtues (Internal Anchors)</h2>
+
+        <div class="section-card">
+            <h3>1. Clarity</h3>
+            <ul>
+                <li><strong>Definition:</strong> Ability to see and state what is happening without distortion.</li>
+                <li><strong>Signal:</strong> Feeling foggy, confused, or like things are “blurred” is a prompt to slow down.</li>
+                <li><strong>Practice:</strong> Rewrite events in plain, concrete language without interpretation.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>2. Honesty</h3>
+            <ul>
+                <li><strong>Definition:</strong> Alignment between inner awareness and outer communication.</li>
+                <li><strong>Signal:</strong> Urge to omit, soften, or hide key facts.</li>
+                <li><strong>Practice:</strong> Add the phrase “including the part where…” and say the uncomfortable detail.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>3. Responsibility</h3>
+            <ul>
+                <li><strong>Definition:</strong> Owning the impact of actions, not just intentions.</li>
+                <li><strong>Signal:</strong> Defensiveness, blaming, or rehearsing excuses.</li>
+                <li><strong>Practice:</strong> Ask, “What am I actually in control of here?” and name one step you can take.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>4. Boundaries</h3>
+            <ul>
+                <li><strong>Definition:</strong> Clear sense of where your responsibility ends and another’s begins.</li>
+                <li><strong>Signal:</strong> Feeling guilty for others’ emotions or choices.</li>
+                <li><strong>Practice:</strong> Write the sentence: “I am not responsible for X, I am responsible for Y.”</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>5. Compassion</h3>
+            <ul>
+                <li><strong>Definition:</strong> Caring without enabling harm.</li>
+                <li><strong>Signal:</strong> Confusing pity or fear of abandonment with love.</li>
+                <li><strong>Practice:</strong> Ask, “If I loved this person and myself equally, what would I do?”</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>6. Humility</h3>
+            <ul>
+                <li><strong>Definition:</strong> Respecting uncertainty and limits of your perspective.</li>
+                <li><strong>Signal:</strong> Feeling certain you are “the only one who understands” or “always right.”</li>
+                <li><strong>Practice:</strong> List at least two ways you could be wrong or missing information.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>7. Courage</h3>
+            <ul>
+                <li><strong>Definition:</strong> Willingness to act in alignment with values despite fear.</li>
+                <li><strong>Signal:</strong> Avoiding conversations, decisions, or actions that you know are necessary.</li>
+                <li><strong>Practice:</strong> Define “the next brave step” that takes 5 minutes or less.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>8. Patience</h3>
+            <ul>
+                <li><strong>Definition:</strong> Allowing growth and repair to take time.</li>
+                <li><strong>Signal:</strong> Urgency, panic, or attempts to “force” resolution.</li>
+                <li><strong>Practice:</strong> Choose one time horizon (e.g., 3 months) and ask, “What small action now would matter then?”</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>9. Playfulness</h3>
+            <ul>
+                <li><strong>Definition:</strong> Capacity to engage with curiosity and lightness, even during difficulty.</li>
+                <li><strong>Signal:</strong> Everything feels heavy, rigid, or high-stakes.</li>
+                <li><strong>Practice:</strong> Introduce a low-risk, silly or creative experiment into your day.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>10. Self-Reflection</h3>
+            <ul>
+                <li><strong>Role:</strong> Coherence/Integration Engine.</li>
+                <li><strong>Function:</strong> Converts experience into permanent upgrades and insight.</li>
+                <li><strong>Practice:</strong>
+                    <ul>
+                        <!-- Highlight the label “Daily Review:”...t in a <strong> tag to apply the bullet-first-color styling. -->
+                        <li><strong>Daily Review:</strong> Use heuristics in the form "If X happens, I will do Y".</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>III. Operational Cycle</h2>
+
+        <div class="section-card">
+            <h3>1. Detect</h3>
+            <div class="cycle-step">
+                <strong>Signal:</strong>
+                <span>Notice physical tension, repetitive thoughts, or emotional spikes.</span>
+            </div>
+            <div class="cycle-step">
+                <strong>Label:</strong>
+                <span>Name the pattern using the virtues or threats (e.g., “Clarity down”, “Cognitive manipulation risk”).</span>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h3>2. Pause</h3>
+            <div class="cycle-step">
+                <strong>Interrupt:</strong>
+                <span>Take 3 slow breaths or physically change context (stand up, move rooms).</span>
+            </div>
+            <div class="cycle-step">
+                <strong>Contain:</strong>
+                <span>Delay any irreversible decisions until after a review step.</span>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h3>3. Review</h3>
+            <div class="cycle-step">
+                <strong>Check:</strong>
+                <span>Ask, “Which virtue is being strained?” and “Which external threat is active?”</span>
+            </div>
+            <div class="cycle-step">
+                <strong>Consult:</strong>
+                <span>Optionally, involve a trusted person or written log for a third perspective.</span>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h3>4. Choose</h3>
+            <div class="cycle-step">
+                <strong>Align:</strong>
+                <span>Pick an action that strengthens at least one virtue and reduces at least one external threat.</span>
+            </div>
+            <div class="cycle-step">
+                <strong>Act:</strong>
+                <span>Take the smallest executable step.</span>
+            </div>
+            <div class="cycle-step">
+                <strong>Review:</strong>
+                <span>Note current emotion with one word and adjust strategies.</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var headers = document.querySelectorAll('.section-card h3');
+
+    headers.forEach(function (h3) {
+        var card = h3.parentElement;
+
+        // Start collapsed by default
+        card.classList.add('collapsed');
+
+        h3.addEventListener('click', function () {
+            card.classList.toggle('collapsed');
+        });
+    });
+});
+</script>
+
+</body>
+</html>
