@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proficiency Levels - High Contrast</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --accent-color: #00ff00; /* High contrast green */
+            --border-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        details {
+            width: 100%;
+        }
+
+        summary {
+            padding: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary:focus {
+            background-color: #333;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        details[open] summary::after {
+            content: '−';
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content {
+            padding: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .content p {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            summary { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Proficiency Levels</h1>
+
+        <div class="card">
+            <details>
+                <summary>Self-Regulation</summary>
+                <div class="content">
+                    <p>(a) Gets overtaken by emotion, impulse, or distraction and loses track of goals without regaining focus. (b) Only refocuses after a strong jolt; like rejection or tough feedback; forces a reset. (c) Can pause and self-correct when triggered, returning to task under moderate stress. (d) Quickly notices when off-course and resets fast; stays on track even under serious pressure. (e) Maintains stability and direction through ongoing stress; little to no course correction needed.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Sense-Making</summary>
+                <div class="content">
+                    <p>(a) Accepts the given narrative without checking; ends up with a distorted understanding. (b) Can make sense of things, but usually only after someone else provides missing context or facts. (c) Writes out assumptions and verifies at least one key idea; avoids distortion under moderate spin. (d) Cross-checks early and stress-tests differences; understanding holds under strong distortion. (e) Rapidly re-forms an accurate picture as new info comes in; gaps automatically prompt fact-checking; minimal backtracking.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Critical Thinking</summary>
+                <div class="content">
+                    <p>(a) Falls for believable but false ideas; uses feelings or authority as proof; results miss the real goal. (b) Spots the obvious flaws, but subtle ones sneak by unless someone else highlights them. (c) Separates claims, evidence, and conclusions; checks one counterpoint; holds up under moderate persuasion. (d) Tries to break down the argument using logic and opposing ideas; holds up under strong persuasion. (e) Quickly sees layered flaws in reasoning; keeps thinking clear even when pressure is high.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Objectivity</summary>
+                <div class="content">
+                    <p>(a) Shifts standards to favor personal bias; lets pressure or preference drive the outcome. (b) Uses fair standards only after someone points out inconsistency. (c) Applies the same rules to everyone; does a quick bias check; holds steady under moderate pressure. (d) Recognizes when identity or incentives pull focus and corrects for them; remains fair under strong pressure. (e) Automatically keeps standards fair, even when facing pressure from multiple angles.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Fairness</summary>
+                <div class="content">
+                    <p>(a) Status or moral pressure determines decisions; bends to fit in rather than doing what’s right. (b) Pushes back only when pressure is obvious or challenged. (c) Holds the same standard no matter who’s involved; stands firm against guilt or status-driven pressure. (d) Declares and sticks to fair standards despite pressure from peers or authority; outcome stays on track. (e) Maintains impartiality even under coordinated pressure; avoids retaliating or protecting self unfairly.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Self-Reflection</summary>
+                <div class="content">
+                    <p>(a) Repeats the same mistakes without learning; missteps continue. (b) Sees the pattern after it happens but doesn’t make changes, so the cycle repeats. (c) Finds one useful fix (rule, check, or limit) and applies it next time; performance improves. (d) Adjusts during the moment when pulled off course; re-checks goals; stays on track under strong stress. (e) Has a set of known patterns and counter-strategies; spots issues early; little clean-up needed.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Self-Efficacy</summary>
+                <div class="content">
+                    <p>(a) Undermining or manipulation kills confidence; stops checking facts or gets defensive; results fall apart. (b) Needs reassurance or direct correction to get back on track. (c) Re-centers using evidence; checks, tests, verifies; and stays on track under moderate doubt. (d) Quickly re-centers when confidence is challenged; keeps checking behavior steady. (e) Remains steady even when heavily undermined; quality of work doesn’t dip.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Self-Discipline</summary>
+                <div class="content">
+                    <p>(a) Seeks comfort or approval; lacks boundaries; results show outside influence. (b) Only refocuses when forced by deadlines, rejection, or management. (c) Sticks to priorities with scope control, avoiding distractions, and checking goals periodically; even under moderate stress. (d) Relies on clear commitments; rules and triggers; and follows through under strong pressure. (e) Holds priorities firm under ongoing pressure without outside enforcement; quality stays high.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary>Perseverance</summary>
+                <div class="content">
+                    <p>(a) Fear or shame causes avoidance or forced compliance; result gets dropped or distorted. (b) Stays on task only when things are calm or after getting reassurance. (c) Keeps moving by taking the next small step, even when moderately intimidated; outcome stays intact. (d) Keeps going forward under strong intimidation; results remain steady. (e) Keeps pushing under constant pressure; fear doesn’t sway standards.</p>
+                </div>
+            </details>
+        </div>
+
+    </div>
+
+</body>
+</html>
