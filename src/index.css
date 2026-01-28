@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 15% 5%;
+    --foreground: 0 0% 98%;
+    --card: 220 15% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 15% 5%;
+    --secondary: 220 10% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 10% 15%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 10% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 10% 18%;
+    --input: 220 10% 18%;
+    --ring: 0 0% 98%;
+    --radius: 0.625rem;
+    
+    /* Custom accent colors for each card */
+    --sense-making: 180 80% 45%;
+    --critical-thinking: 220 80% 55%;
+    --objectivity: 260 70% 55%;
+    --fairness: 320 70% 55%;
+    --self-reflection: 35 90% 50%;
+    --self-efficacy: 140 70% 45%;
+    --self-discipline: 210 20% 55%;
+    --perseverance: 0 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: linear-gradient(180deg, hsl(220 15% 5%) 0%, hsl(220 20% 3%) 100%);
+    min-height: 100vh;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(220 15% 5%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(220 10% 20%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(220 10% 30%);
+}
+
+/* Smooth transitions for collapsible content */
+.collapsible-content {
+  overflow: hidden;
+  transition: height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.collapsible-content[data-state="closed"] {
+  height: 0;
+  opacity: 0;
+}
+
+.collapsible-content[data-state="open"] {
+  opacity: 1;
+}

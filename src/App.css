@@ -1,0 +1,39 @@
+/* App-specific styles */
+
+/* Ensure smooth height transitions for collapsible content */
+.collapsible-content {
+  will-change: height, opacity;
+}
+
+/* Card hover effects */
+.group:hover {
+  transform: translateY(-1px);
+}
+
+/* Button press effect */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Focus styles for accessibility */
+button:focus-visible {
+  outline: 2px solid hsl(220 80% 55%);
+  outline-offset: 2px;
+}
+
+/* Animation for card expansion */
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 40px currentColor;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .collapsible-card {
+    margin: 0 -0.5rem;
+  }
+}
