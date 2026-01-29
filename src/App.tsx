@@ -1,262 +1,373 @@
-import { useState } from 'react'
-import { ChevronDown, Brain, Scale, Eye, Heart, UserCircle, Target, Shield, Flame } from 'lucide-react'
-import './App.css'
+import { useState, useMemo } from 'react';
+import { 
+  Brain, 
+  Scale, 
+  Eye, 
+  Heart, 
+  UserCircle, 
+  Target, 
+  Shield, 
+  Flame,
+  ChevronDown,
+  Expand,
+  Minimize,
+  Sparkles,
+  Lightbulb,
+  Search,
+  CheckCircle,
+  TrendingUp,
+  Zap,
+  Flag,
+  Activity
+} from 'lucide-react';
+import './App.css';
 
-interface CardData {
-  id: string
-  title: string
-  content: string
-  accentColor: string
-  icon: React.ReactNode
+interface Framework {
+  id: string;
+  title: string;
+  content: string;
+  accentColor: string;
+  Icon: React.ElementType;
 }
 
-const cards: CardData[] = [
+const frameworks: Framework[] = [
   {
     id: 'sense-making',
     title: 'Sense-Making',
     content: 'Extract constant patterns from senses → form symbolic concepts → organize concepts into relational schemas → enable interpretation, inference, and evaluation.',
     accentColor: 'hsl(180 80% 45%)',
-    icon: <Brain className="w-6 h-6" />
+    Icon: Brain,
   },
   {
     id: 'critical-thinking',
     title: 'Critical Thinking',
     content: 'Assess proposition likelihood and evidential warrant → evaluate argument soundness and evidence relevance → clarify relations among claims, evidence, and inferences.',
     accentColor: 'hsl(220 80% 55%)',
-    icon: <Scale className="w-6 h-6" />
+    Icon: Scale,
   },
   {
     id: 'objectivity',
     title: 'Objectivity',
     content: 'Identify uneven evidentiary standards or motives → uniformly apply empirical and rational criteria to all conclusions → via self-critique.',
     accentColor: 'hsl(260 70% 55%)',
-    icon: <Eye className="w-6 h-6" />
+    Icon: Eye,
   },
   {
     id: 'fairness',
     title: 'Fairness',
     content: 'Empathetically weigh actor\'s intent → against accountability for consequences → in reciprocal interactions.',
     accentColor: 'hsl(320 70% 55%)',
-    icon: <Heart className="w-6 h-6" />
+    Icon: Heart,
   },
   {
     id: 'self-reflection',
     title: 'Self-Reflection',
     content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers → convert insights into action.',
     accentColor: 'hsl(35 90% 50%)',
-    icon: <UserCircle className="w-6 h-6" />
+    Icon: UserCircle,
   },
   {
     id: 'self-efficacy',
     title: 'Self-Efficacy',
     content: 'Ground belief in past achievements → frame setbacks as temporary skill gaps → periodically reassess skills against objective competence.',
     accentColor: 'hsl(140 70% 45%)',
-    icon: <Target className="w-6 h-6" />
+    Icon: Target,
   },
   {
     id: 'self-discipline',
     title: 'Self-Discipline',
     content: 'Establish priorities and goals → voluntarily inhibit wants → implement shoulds amid internal conflict → align behavior to long-term objectives.',
     accentColor: 'hsl(210 20% 55%)',
-    icon: <Shield className="w-6 h-6" />
+    Icon: Shield,
   },
   {
     id: 'perseverance',
     title: 'Perseverance',
     content: 'Commit to valued outcomes → override fear-based avoidance → persist in goal-directed action → via gradual exposure and skill-development.',
     accentColor: 'hsl(0 70% 50%)',
-    icon: <Flame className="w-6 h-6" />
-  }
-]
+    Icon: Flame,
+  },
+];
 
-function CollapsibleCard({ card, isOpen, onToggle }: { card: CardData; isOpen: boolean; onToggle: () => void }) {
+// Map step keywords to mini icons
+function getStepIcon(stepText: string): React.ElementType | null {
+  const lower = stepText.toLowerCase();
+  if (lower.includes('pattern') || lower.includes('senses') || lower.includes('concept')) return Brain;
+  if (lower.includes('assess') || lower.includes('evaluate') || lower.includes('warrant') || lower.includes('soundness')) return Scale;
+  if (lower.includes('identify') || lower.includes('criteria') || lower.includes('critique')) return Eye;
+  if (lower.includes('empath') || lower.includes('intent') || lower.includes('accountab') || lower.includes('reciprocal')) return Heart;
+  if (lower.includes('separate') || lower.includes('choice') || lower.includes('circumstance') || lower.includes('insight')) return UserCircle;
+  if (lower.includes('ground') || lower.includes('achievement') || lower.includes('skill') || lower.includes('competence')) return Target;
+  if (lower.includes('establish') || lower.includes('priorit') || lower.includes('goal') || lower.includes('inhibit') || lower.includes('implement')) return Shield;
+  if (lower.includes('commit') || lower.includes('outcome') || lower.includes('persist') || lower.includes('exposure')) return Flame;
+  if (lower.includes('extract') || lower.includes('form') || lower.includes('organize')) return Sparkles;
+  if (lower.includes('interpret') || lower.includes('inference')) return Lightbulb;
+  if (lower.includes('clarify') || lower.includes('relation')) return Search;
+  if (lower.includes('convert') || lower.includes('action')) return CheckCircle;
+  if (lower.includes('frame') || lower.includes('temporary')) return TrendingUp;
+  if (lower.includes('align') || lower.includes('long-term')) return Flag;
+  if (lower.includes('override') || lower.includes('avoidance')) return Zap;
+  if (lower.includes('apply') || lower.includes('uniform')) return Activity;
+  return null;
+}
+
+function StepChip({ 
+  step, 
+  index, 
+  accentColor, 
+  totalSteps 
+}: { 
+  step: string; 
+  index: number; 
+  accentColor: string;
+  totalSteps: number;
+}) {
+  const StepIcon = getStepIcon(step);
+  const isLast = index === totalSteps - 1;
+  
   return (
     <div 
-      className="relative rounded-xl overflow-hidden transition-all duration-300"
-      style={{
-        background: 'linear-gradient(145deg, hsl(220 15% 10%) 0%, hsl(220 15% 6%) 100%)',
-        boxShadow: isOpen 
-          ? `0 0 30px ${card.accentColor}30, 0 4px 20px rgba(0,0,0,0.5)` 
-          : '0 4px 20px rgba(0,0,0,0.4)',
-        border: `1px solid ${isOpen ? card.accentColor : 'hsl(220 10% 18%)'}`,
-      }}
+      className="flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 duration-400"
+      style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Accent line at top */}
-      <div 
-        className="absolute top-0 left-0 right-0 h-1 transition-all duration-300"
-        style={{ 
-          background: isOpen ? card.accentColor : 'transparent',
-          opacity: isOpen ? 1 : 0.3
+      <div
+        className="step-chip"
+        style={{
+          backgroundColor: `${accentColor}25`,
+          borderColor: accentColor,
+          color: '#ffffff',
+          boxShadow: `0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30`,
         }}
-      />
-      
-      {/* Card Header - Always visible */}
-      <button
-        onClick={onToggle}
-        className="w-full p-6 flex items-center justify-between gap-4 text-left group"
       >
-        <div className="flex items-center gap-4">
-          <div 
-            className="p-3 rounded-lg transition-all duration-300"
+        <span 
+          className="inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold flex-shrink-0"
+          style={{ backgroundColor: accentColor, color: '#0f172a' }}
+        >
+          {index + 1}
+        </span>
+        {StepIcon && <StepIcon className="w-4 h-4 flex-shrink-0" style={{ color: accentColor }} />}
+        <span className="text-base font-medium tracking-tight">{step.trim()}</span>
+      </div>
+      {!isLast && (
+        <span 
+          className="arrow-connector text-xl font-bold"
+          style={{ color: accentColor }}
+        >
+          ↓
+        </span>
+      )}
+    </div>
+  );
+}
+
+function FrameworkCard({
+  framework,
+  isOpen,
+  onToggle,
+}: {
+  framework: Framework;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const steps = useMemo(() => framework.content.split('→'), [framework.content]);
+  
+  return (
+    <div className="group">
+      <div
+        className={`framework-card rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
+          isOpen ? 'expanded' : 'collapsed'
+        }`}
+        style={{
+          borderColor: isOpen ? framework.accentColor : `${framework.accentColor}50`,
+          backgroundColor: isOpen ? `${framework.accentColor}15` : `${framework.accentColor}08`,
+          boxShadow: isOpen 
+            ? `0 0 50px -10px ${framework.accentColor}60, inset 0 1px 0 ${framework.accentColor}30`
+            : `0 4px 25px -5px ${framework.accentColor}25, inset 0 1px 0 ${framework.accentColor}15`,
+          ['--glow-color' as string]: `${framework.accentColor}50`,
+        }}
+      >
+        <button
+          onClick={onToggle}
+          className="w-full p-5 sm:p-6 flex items-center justify-between gap-4 text-left"
+          aria-expanded={isOpen}
+          aria-controls={`content-${framework.id}`}
+        >
+          <div className="flex items-center gap-4">
+            <div
+              className="icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300"
+              style={{ 
+                backgroundColor: `${framework.accentColor}30`,
+                color: framework.accentColor,
+                boxShadow: `0 0 20px -5px ${framework.accentColor}40`,
+              }}
+            >
+              <framework.Icon className="w-6 h-6 sm:w-7 sm:h-7" />
+            </div>
+            <h3 
+              className="text-lg sm:text-xl font-bold tracking-tight"
+              style={{ color: framework.accentColor }}
+            >
+              {framework.title}
+            </h3>
+          </div>
+          <div
+            className="chevron-wrapper w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
             style={{ 
-              background: `${card.accentColor}15`,
-              color: card.accentColor
+              backgroundColor: isOpen ? `${framework.accentColor}40` : `${framework.accentColor}15`,
+              color: framework.accentColor,
+              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+              boxShadow: isOpen ? `0 0 15px -3px ${framework.accentColor}50` : 'none',
             }}
           >
-            {card.icon}
+            <ChevronDown className="w-5 h-5" />
           </div>
-          <h2 
-            className="text-xl font-semibold tracking-tight transition-colors duration-300"
-            style={{ color: isOpen ? card.accentColor : 'hsl(0 0% 95%)' }}
-          >
-            {card.title}
-          </h2>
-        </div>
-        <div 
-          className="p-2 rounded-lg transition-all duration-300"
-          style={{ 
-            background: isOpen ? `${card.accentColor}20` : 'transparent',
-            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-          }}
-        >
-          <ChevronDown 
-            className="w-5 h-5 transition-colors duration-300"
-            style={{ color: isOpen ? card.accentColor : 'hsl(220 10% 50%)' }}
-          />
-        </div>
-      </button>
-      
-      {/* Collapsible Content */}
-      <div 
-        className="collapsible-content"
-        data-state={isOpen ? 'open' : 'closed'}
-        style={{ height: isOpen ? 'auto' : 0 }}
-      >
-        <div className="px-6 pb-6">
+        </button>
+        
+        {isOpen && (
           <div 
-            className="pt-2 border-t"
-            style={{ borderColor: 'hsl(220 10% 15%)' }}
+            id={`content-${framework.id}`}
+            className="border-t animate-in fade-in duration-500"
+            style={{ 
+              borderColor: `${framework.accentColor}40`,
+              paddingTop: '1.5rem',
+              paddingBottom: '0.5rem',
+            }}
           >
-            {/* Process flow visualization – now the only description */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              {card.content.split('→').map((step, idx, arr) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <span 
-                    className="px-3 py-1.5 rounded-md text-sm font-medium"
-                    style={{ 
-                      background: `${card.accentColor}15`,
-                      color: card.accentColor,
-                      border: `1px solid ${card.accentColor}30`
-                    }}
-                  >
-                    {step.trim().replace(/[.→]$/, '')}
-                  </span>
-                  {idx < arr.length - 1 && (
-                    <span style={{ color: card.accentColor }}>→</span>
-                  )}
-                </div>
-              ))}
+            <div className="px-5 sm:px-6 pb-6">
+              {/* Steps Flow */}
+              <div className="mt-6 flex flex-wrap gap-3 animate-in fade-in duration-500">
+                {steps.map((step, idx) => (
+                  <StepChip
+                    key={idx}
+                    step={step}
+                    index={idx}
+                    accentColor={framework.accentColor}
+                    totalSteps={steps.length}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
 function App() {
-  const [openCards, setOpenCards] = useState<Set<string>>(new Set())
+  const [openCards, setOpenCards] = useState<Set<string>>(new Set());
 
   const toggleCard = (id: string) => {
-    setOpenCards(prev => {
-      const newSet = new Set(prev)
+    setOpenCards((prev) => {
+      const newSet = new Set(prev);
       if (newSet.has(id)) {
-        newSet.delete(id)
+        newSet.delete(id);
       } else {
-        newSet.add(id)
+        newSet.add(id);
       }
-      return newSet
-    })
-  }
+      return newSet;
+    });
+  };
 
-  const openAll = () => setOpenCards(new Set(cards.map(c => c.id)))
-  const closeAll = () => setOpenCards(new Set())
+  const expandAll = () => {
+    setOpenCards(new Set(frameworks.map((f) => f.id)));
+  };
+
+  const collapseAll = () => {
+    setOpenCards(new Set());
+  };
+
+  const allExpanded = openCards.size === frameworks.length;
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      {/* Background gradient overlay */}
-      <div 
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at top, hsl(220 30% 8%) 0%, hsl(220 15% 3%) 100%)'
-        }}
-      />
-      
-      <div className="relative max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      {/* Background decoration */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div 
+          className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl"
+          style={{ background: 'radial-gradient(circle, hsl(220 80% 55% / 0.3), transparent 70%)' }}
+        />
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-15 blur-3xl"
+          style={{ background: 'radial-gradient(circle, hsl(180 80% 45% / 0.25), transparent 70%)' }}
+        />
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl"
+          style={{ background: 'radial-gradient(circle, hsl(260 70% 55% / 0.2), transparent 60%)' }}
+        />
+      </div>
+
+      <div className="relative z-10">
         {/* Header */}
-        <header className="text-center mb-12">
-          <h1 
-            className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight"
-            style={{ 
-              background: 'linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 10% 70%) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-          >
-            Cognitive Frameworks
-          </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'hsl(220 10% 60%)' }}>
-            Eight essential mental models for structured thinking and personal development
-          </p>
-          
-          {/* Control buttons */}
-          <div className="flex justify-center gap-3 mt-6">
-            <button
-              onClick={openAll}
-              className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-              style={{ 
-                background: 'hsl(220 10% 15%)',
-                color: 'hsl(0 0% 90%)',
-                border: '1px solid hsl(220 10% 25%)'
-              }}
-            >
-              Expand All
-            </button>
-            <button
-              onClick={closeAll}
-              className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-              style={{ 
-                background: 'hsl(220 10% 15%)',
-                color: 'hsl(0 0% 90%)',
-                border: '1px solid hsl(220 10% 25%)'
-              }}
-            >
-              Collapse All
-            </button>
+        <header className="pt-12 pb-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <Brain className="w-4 h-4 text-cyan-400" />
+              <span className="text-sm font-medium text-slate-300">Mental Models Collection</span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                Cognitive Frameworks
+              </span>
+            </h1>
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Eight essential mental models for structured thinking, decision-making, and personal development
+            </p>
           </div>
         </header>
 
-        {/* Cards Grid */}
-        <div className="space-y-4">
-          {cards.map((card) => (
-            <CollapsibleCard
-              key={card.id}
-              card={card}
-              isOpen={openCards.has(card.id)}
-              onToggle={() => toggleCard(card.id)}
-            />
-          ))}
+        {/* Control Buttons */}
+        <div className="pb-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto flex justify-center gap-3">
+            <button
+              onClick={expandAll}
+              disabled={allExpanded}
+              className="control-btn expand-btn"
+              aria-label="Expand all cards"
+            >
+              <Expand className="w-4 h-4" />
+              <span>Expand All</span>
+            </button>
+            <button
+              onClick={collapseAll}
+              disabled={openCards.size === 0}
+              className="control-btn collapse-btn"
+              aria-label="Collapse all cards"
+            >
+              <Minimize className="w-4 h-4" />
+              <span>Collapse All</span>
+            </button>
+          </div>
         </div>
 
+        {/* Cards */}
+        <main className="pb-16 px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6 max-w-5xl mx-auto">
+            {frameworks.map((framework) => (
+              <FrameworkCard
+                key={framework.id}
+                framework={framework}
+                isOpen={openCards.has(framework.id)}
+                onToggle={() => toggleCard(framework.id)}
+              />
+            ))}
+          </div>
+        </main>
+
         {/* Footer */}
-        <footer className="mt-16 text-center" style={{ color: 'hsl(220 10% 40%)' }}>
-          <p className="text-sm">
-            Click on any card to expand and view the detailed process flow
-          </p>
+        <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="text-sm text-slate-500">
+              Cognitive Frameworks — Structured thinking for better decision-making
+            </p>
+            <p className="text-xs text-slate-600 mt-2">
+              Click any card to explore the cognitive process
+            </p>
+          </div>
         </footer>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,39 +1,253 @@
-/* App-specific styles */
+/* Cognitive Frameworks - App Styles */
 
-/* Ensure smooth height transitions for collapsible content */
-.collapsible-content {
-  will-change: height, opacity;
+/* Base animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Card hover effects */
-.group:hover {
-  transform: translateY(-1px);
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Button press effect */
-button:active {
-  transform: scale(0.98);
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px -5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 35px -5px currentColor;
+  }
+}
+
+/* Animation utilities */
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.slide-in-from-bottom-2 {
+  animation-name: slideInFromBottom;
+}
+
+.duration-400 {
+  animation-duration: 400ms;
+}
+
+.duration-500 {
+  animation-duration: 500ms;
+}
+
+/* Framework Card Styles */
+.framework-card {
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.framework-card.collapsed {
+  cursor: pointer;
+}
+
+.framework-card.collapsed:hover {
+  transform: translateY(-2px);
+}
+
+.framework-card.collapsed:hover .icon-wrapper {
+  transform: scale(1.05);
+}
+
+/* Group hover glow effect for collapsed cards - uses card's accent color */
+.group:hover .framework-card.collapsed {
+  box-shadow: 
+    0 0 45px -5px var(--glow-color),
+    0 8px 30px -10px var(--glow-color),
+    inset 0 1px 0 var(--glow-color);
+  border-color: var(--glow-color);
+}
+
+.group:hover .framework-card.collapsed .icon-wrapper {
+  box-shadow: 0 0 25px -5px var(--glow-color);
+}
+
+/* Expanded state */
+.framework-card.expanded {
+  transform: translateY(-2px);
+}
+
+/* Icon wrapper */
+.icon-wrapper {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Chevron wrapper */
+.chevron-wrapper {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Step Chip Styles */
+.step-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.step-chip:hover {
+  transform: translateX(6px);
+  filter: brightness(1.15);
+}
+
+/* Arrow connector */
+.arrow-connector {
+  line-height: 1;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.step-chip:hover + .arrow-connector {
+  transform: translateY(2px);
+}
+
+/* Control Buttons */
+.control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.control-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.expand-btn {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: rgb(134, 239, 172);
+}
+
+.expand-btn:hover:not(:disabled) {
+  background-color: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 20px -5px rgba(34, 197, 94, 0.3);
+}
+
+.collapse-btn {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: rgb(252, 165, 165);
+}
+
+.collapse-btn:hover:not(:disabled) {
+  background-color: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 20px -5px rgba(239, 68, 68, 0.3);
 }
 
 /* Focus styles for accessibility */
 button:focus-visible {
-  outline: 2px solid hsl(220 80% 55%);
+  outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
-/* Animation for card expansion */
-@keyframes cardGlow {
-  0%, 100% {
-    box-shadow: 0 0 20px currentColor;
+.framework-card button:focus-visible {
+  outline-color: inherit;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .fade-in,
+  .slide-in-from-bottom-2 {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
-  50% {
-    box-shadow: 0 0 40px currentColor;
+  
+  .framework-card,
+  .icon-wrapper,
+  .chevron-wrapper,
+  .step-chip,
+  .control-btn {
+    transition: none;
   }
 }
 
-/* Responsive adjustments */
+/* Mobile optimizations */
 @media (max-width: 640px) {
-  .collapsible-card {
-    margin: 0 -0.5rem;
+  .step-chip {
+    padding: 0.625rem 1rem;
+    font-size: 0.9375rem;
+  }
+  
+  .framework-card button {
+    padding: 1rem 1.25rem;
+  }
+  
+  .icon-wrapper {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  
+  .icon-wrapper svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .framework-card {
+    border-width: 2px;
+  }
+  
+  .step-chip {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .framework-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .control-btn {
+    display: none;
+  }
+  
+  .framework-card.expanded,
+  .framework-card.collapsed {
+    display: block !important;
   }
 }
