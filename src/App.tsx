@@ -126,7 +126,7 @@ function CollapsibleCard({ card, isOpen, onToggle }: { card: CardData; isOpen: b
         </div>
       </button>
       
-                  {/* Collapsible Content */}
+      {/* Collapsible Content */}
       <div 
         className="collapsible-content"
         data-state={isOpen ? 'open' : 'closed'}
@@ -160,6 +160,9 @@ function CollapsibleCard({ card, isOpen, onToggle }: { card: CardData; isOpen: b
           </div>
         </div>
       </div>
+    </div>
+  )
+}
 
 function App() {
   const [openCards, setOpenCards] = useState<Set<string>>(new Set())
