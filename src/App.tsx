@@ -126,7 +126,7 @@ function CollapsibleCard({ card, isOpen, onToggle }: { card: CardData; isOpen: b
         </div>
       </button>
       
-      {/* Collapsible Content */}
+            {/* Collapsible Content */}
       <div 
         className="collapsible-content"
         data-state={isOpen ? 'open' : 'closed'}
@@ -137,12 +137,8 @@ function CollapsibleCard({ card, isOpen, onToggle }: { card: CardData; isOpen: b
             className="pt-2 border-t"
             style={{ borderColor: 'hsl(220 10% 15%)' }}
           >
-            <p className="text-base leading-relaxed mt-4" style={{ color: 'hsl(220 10% 75%)' }}>
-              {card.content}
-            </p>
-            
-            {/* Process flow visualization */}
-            <div className="mt-5 flex flex-wrap gap-2">
+            {/* Process flow visualization – now the only description */}
+            <div className="mt-4 flex flex-wrap gap-2">
               {card.content.split('→').map((step, idx, arr) => (
                 <div key={idx} className="flex items-center gap-2">
                   <span 
@@ -164,9 +160,6 @@ function CollapsibleCard({ card, isOpen, onToggle }: { card: CardData; isOpen: b
           </div>
         </div>
       </div>
-    </div>
-  )
-}
 
 function App() {
   const [openCards, setOpenCards] = useState<Set<string>>(new Set())
