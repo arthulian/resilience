@@ -34,7 +34,7 @@ const frameworks: Framework[] = [
   {
     id: 'sense-making',
     title: 'Sense-Making',
-    content: 'Extract constant patterns from senses → form symbolic concepts → organize concepts into relational schemas → enable interpretation, inference, and evaluation.',
+    content: 'Extract constant patterns from situations or circumstances → form symbolic concepts → organize concepts into relational schemas → enable interpretation, inference, and evaluation.',
     accentColor: 'hsl(180 80% 45%)',
     Icon: Brain,
   },
@@ -62,7 +62,7 @@ const frameworks: Framework[] = [
   {
     id: 'self-reflection',
     title: 'Self-Reflection',
-    content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers → convert insights into action.',
+    content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers within yourself → convert insights into action.',
     accentColor: 'hsl(35 90% 50%)',
     Icon: UserCircle,
   },
