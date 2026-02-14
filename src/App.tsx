@@ -41,7 +41,7 @@ const frameworks: Framework[] = [
   {
     id: 'critical-thinking',
     title: 'Critical Thinking',
-    content: 'Assess proposition likelihood and evidential warrant → evaluate argument soundness and evidence relevance → clarify relations among claims, evidence, and inferences.',
+    content: 'Assess: proposition, likelihood, and evidential warrant → evaluate argument soundness and evidence relevance → clarify relations among claims, evidence, and inferences.',
     accentColor: 'hsl(220 80% 55%)',
     Icon: Scale,
   },
