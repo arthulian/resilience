@@ -55,7 +55,7 @@ const frameworks: Framework[] = [
   {
     id: 'fairness',
     title: 'Fairness',
-    content: 'Empathetically weigh actor\'s intent → against accountability for consequences → in reciprocal interactions.',
+    content: 'Applies accountability by weighing: → intent against harmful consequences → within reciprocal interactions.',
     accentColor: 'hsl(320 70% 55%)',
     Icon: Heart,
   },
