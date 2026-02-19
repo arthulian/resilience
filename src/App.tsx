@@ -62,7 +62,7 @@ const frameworks: Framework[] = [
   {
     id: 'self-reflection',
     title: 'Self-Reflection',
-    content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers within yourself → convert insights into concrete actions.',
+    content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers within yourself → Translate insights into specific, measurable actions.',
     accentColor: 'hsl(35 90% 50%)',
     Icon: UserCircle,
   },
