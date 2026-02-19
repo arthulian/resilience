@@ -140,7 +140,7 @@ boxShadow: `0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30`,
 }}
 >
 <span
-className=“inline-flex w-6 h-6 items-center justify-center text-2xl font-bold flex-shrink-0 leading-none”
+className=“inline-flex w-6 h-6 rounded-full items-center justify-center text-lg font-bold flex-shrink-0 leading-none”
 style={{ color: accentColor }}
 >
 •
