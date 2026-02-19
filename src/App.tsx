@@ -1,24 +1,5 @@
 import { useState, useMemo } from 'react';
 import { 
-  Brain, 
-  Scale, 
-  Eye, 
-  Heart, 
-  UserCircle, 
-  Target, 
-  Shield, 
-  Flame,
-  ChevronDown,
-  Expand,
-  Minimize,
-  Sparkles,
-  Lightbulb,
-  Search,
-  CheckCircle,
-  TrendingUp,
-  Zap,
-  Flag,
-  Activity
 } from 'lucide-react';
 import './App.css';
 
