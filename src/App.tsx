@@ -1,4 +1,3 @@
-You’re right. The shorter version had condensed lines which could cause issues. Let me give you the full version here in plain text:
 import { useState, useMemo } from ‘react’;
 import {
 Brain,
