@@ -34,7 +34,7 @@ const frameworks: Framework[] = [
   {
     id: 'sense-making',
     title: 'Sense-Making',
-    content: 'Identify constant patterns within different situations or contexts → create symbolic representations → structure ideas into interconnected frameworks → enable interpretation, inference, and evaluation.',
+    content: 'Identify constant patterns within different situations or contexts → frame symbolic representations → structure ideas into interconnected frameworks → enable interpretation, inference, and evaluation.',
     accentColor: 'hsl(180 80% 45%)',
     Icon: Brain,
   },
@@ -100,7 +100,7 @@ function getStepIcon(stepText: string): React.ElementType | null {
   if (lower.includes('ground') || lower.includes('achievement') || lower.includes('skill') || lower.includes('competence')) return Target;
   if (lower.includes('establish') || lower.includes('priorit') || lower.includes('goal') || lower.includes('inhibit') || lower.includes('implement')) return Shield;
   if (lower.includes('commit') || lower.includes('outcome') || lower.includes('persist') || lower.includes('exposure')) return Flame;
-  if (lower.includes('extract') || lower.includes('create') || lower.includes('organize')) return Sparkles;
+  if (lower.includes('extract') || lower.includes('frame') || lower.includes('organize')) return Sparkles;
   if (lower.includes('interpret') || lower.includes('inference')) return Lightbulb;
   if (lower.includes('clarify') || lower.includes('relation')) return Search;
   if (lower.includes('convert') || lower.includes('action')) return CheckCircle;
