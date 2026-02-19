@@ -48,7 +48,7 @@ const frameworks: Framework[] = [
   {
     id: 'objectivity',
     title: 'Objectivity',
-    content: 'Recognize inconsistent standards of evidence or underlying motives → uniformly apply empirical and rational criteria to all conclusions → through ongoing self-critique.',
+    content: 'Recognize inconsistent criteria of evidence or underlying motives → uniformly apply empirical and rational criteria to all conclusions → through ongoing self-critique.',
     accentColor: 'hsl(260 70% 55%)',
     Icon: Eye,
   },
@@ -76,7 +76,7 @@ const frameworks: Framework[] = [
   {
     id: 'self-discipline',
     title: 'Self-Discipline',
-    content: 'Establish priorities and goals → voluntarily inhibit wants → carry out “shoulds” (necessary actions) despite internal resistance → ensure behavior aligns with long-term objectives.',
+    content: 'Establish priorities and goals → voluntarily inhibit wants → carry out necessary action (oughts) despite internal resistance → ensure behavior aligns with long-term objectives.',
     accentColor: 'hsl(210 20% 55%)',
     Icon: Shield,
   },
