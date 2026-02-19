@@ -90,20 +90,24 @@ Icon: Flame,
 },
 ];
 
-// ✅ Fixed: icon mapping by frameworkId + step index instead of fragile keyword matching
+// Icon mapping by frameworkId + step index — guaranteed icon for every step
 const stepIconMap: Record<string, React.ElementType[]> = {
-‘sense-making’:     [Brain, Sparkles, Network, Lightbulb],
+‘sense-making’:      [Brain, Sparkles, Network, Lightbulb],
 ‘critical-thinking’: [Scale, Search, Activity],
-‘objectivity’:      [Eye, CheckCircle, Eye],
-‘fairness’:         [Heart, Scale, Heart],
-‘self-reflection’:  [UserCircle, Search, CheckCircle],
-‘self-efficacy’:    [Target, TrendingUp, Activity],
-‘self-discipline’:  [Shield, Shield, Flag, TrendingUp],
-‘perseverance’:     [Flame, Zap, Flame, TrendingUp],
+‘objectivity’:       [Eye, CheckCircle, Eye],
+‘fairness’:          [Heart, Scale, Heart],
+‘self-reflection’:   [UserCircle, Search, CheckCircle],
+‘self-efficacy’:     [Target, TrendingUp, Activity],
+‘self-discipline’:   [Shield, Shield, Flag, TrendingUp],
+‘perseverance’:      [Flame, Zap, Flame, TrendingUp],
 };
 
-function getStepIcon(frameworkId: string, index: number): React.ElementType {
-return stepIconMap[frameworkId]?.[index] ?? Brain;
+function getStepIcon(
+frameworkId: string,
+index: number,
+fallback: React.ElementType
+): React.ElementType {
+return stepIconMap[frameworkId]?.[index] ?? fallback;
 }
 
 function StepChip({
@@ -112,15 +116,16 @@ index,
 accentColor,
 totalSteps,
 frameworkId,
+fallbackIcon,
 }: {
 step: string;
 index: number;
 accentColor: string;
 totalSteps: number;
 frameworkId: string;
+fallbackIcon: React.ElementType;
 }) {
-// ✅ Fixed: always passes frameworkId + index, never returns null
-const StepIcon = getStepIcon(frameworkId, index);
+const StepIcon = getStepIcon(frameworkId, index, fallbackIcon);
 const isLast = index === totalSteps - 1;
 
 return (
@@ -143,9 +148,8 @@ style={{ backgroundColor: accentColor, color: ‘#0f172a’ }}
 >
 {index + 1}
 </span>
-{/* ✅ Fixed: StepIcon is always defined now, no conditional needed */}
 <StepIcon className=“w-4 h-4 flex-shrink-0” style={{ color: accentColor }} />
-<span className="text-base font-medium tracking-tight">{step.trim()}</span>
+<span className="text-base font-medium tracking-tight">{step}</span>
 </div>
 {!isLast && (
 <span
@@ -168,7 +172,15 @@ framework: Framework;
 isOpen: boolean;
 onToggle: () => void;
 }) {
-const steps = useMemo(() => framework.content.split(‘→’), [framework.content]);
+// Trim whitespace and filter out any empty segments (e.g. from trailing periods)
+const steps = useMemo(
+() =>
+framework.content
+.split(‘→’)
+.map((s) => s.trim())
+.filter((s) => s.length > 0),
+[framework.content]
+);
 
 return (
 <div className="group">
@@ -232,7 +244,6 @@ boxShadow: isOpen ? `0 0 15px -3px ${framework.accentColor}50` : ‘none’,
         }}
       >
         <div className="px-5 sm:px-6 pb-6">
-          {/* Steps Flow */}
           <div className="mt-6 flex flex-wrap gap-3 animate-in fade-in duration-500">
             {steps.map((step, idx) => (
               <StepChip
@@ -241,7 +252,8 @@ boxShadow: isOpen ? `0 0 15px -3px ${framework.accentColor}50` : ‘none’,
                 index={idx}
                 accentColor={framework.accentColor}
                 totalSteps={steps.length}
-                frameworkId={framework.id}  // ✅ Fixed: now passed down
+                frameworkId={framework.id}
+                fallbackIcon={framework.Icon}
               />
             ))}
           </div>
@@ -344,7 +356,7 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
 
     {/* Cards */}
     <main className="pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="space-y-6 max-y-5xl mx-auto">
+      <div className="space-y-6 max-w-5xl mx-auto">
         {frameworks.map((framework) => (
           <FrameworkCard
             key={framework.id}
