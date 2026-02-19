@@ -8,7 +8,7 @@ UserCircle,
 Target,
 Shield,
 Flame,
-Sparkles,
+Star,
 Lightbulb,
 Search,
 CheckCircle,
@@ -92,9 +92,9 @@ Icon: Flame,
 
 // Icon mapping by frameworkId + step index — guaranteed icon for every step
 const stepIconMap: Record<string, React.ElementType[]> = {
-‘sense-making’:      [Brain, Sparkles, Network, Lightbulb],
+‘sense-making’:      [Brain, Star, Network, Lightbulb],
 ‘critical-thinking’: [Scale, Search, Activity],
-‘objectivity’:       [Eye, CheckCircle, Eye],
+‘objectivity’:       [Search, CheckCircle, Eye],
 ‘fairness’:          [Heart, Scale, Heart],
 ‘self-reflection’:   [UserCircle, Search, CheckCircle],
 ‘self-efficacy’:     [Target, TrendingUp, Activity],
@@ -142,12 +142,6 @@ color: ‘#ffffff’,
 boxShadow: `0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30`,
 }}
 >
-<span
-className=“inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold flex-shrink-0”
-style={{ backgroundColor: accentColor, color: ‘#0f172a’ }}
->
-{index + 1}
-</span>
 <StepIcon className=“w-4 h-4 flex-shrink-0” style={{ color: accentColor }} />
 <span className="text-base font-medium tracking-tight">{step}</span>
 </div>
