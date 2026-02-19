@@ -48,7 +48,7 @@ const frameworks: Framework[] = [
   {
     id: 'objectivity',
     title: 'Objectivity',
-    content: 'Recognize inconsistent criteria of evidence or underlying motives → uniformly apply empirical and rational criteria to all conclusions → through ongoing self-critique.',
+    content: 'Recognize inconsistent standards of proof or underlying motives → uniformly apply empirical and rational criteria to all conclusions → through ongoing self-critique.',
     accentColor: 'hsl(260 70% 55%)',
     Icon: Eye,
   },
