@@ -94,13 +94,13 @@ function getStepIcon(stepText: string): React.ElementType | null {
   const lower = stepText.toLowerCase();
   if (lower.includes('pattern') || lower.includes('senses') || lower.includes('concept')) return Brain;
   if (lower.includes('assess') || lower.includes('evaluate') || lower.includes('warrant') || lower.includes('soundness')) return Scale;
-  if (lower.includes('identify') || lower.includes('criteria') || lower.includes('critique')) return Eye;
+  if (lower.includes('recognize') || lower.includes('criteria') || lower.includes('critique')) return Eye;
   if (lower.includes('empath') || lower.includes('intent') || lower.includes('accountab') || lower.includes('reciprocal')) return Heart;
   if (lower.includes('separate') || lower.includes('choice') || lower.includes('circumstance') || lower.includes('insight')) return UserCircle;
   if (lower.includes('ground') || lower.includes('achievement') || lower.includes('skill') || lower.includes('competence')) return Target;
   if (lower.includes('establish') || lower.includes('priorit') || lower.includes('goal') || lower.includes('inhibit') || lower.includes('implement')) return Shield;
   if (lower.includes('commit') || lower.includes('outcome') || lower.includes('persist') || lower.includes('exposure')) return Flame;
-  if (lower.includes('extract') || lower.includes('form') || lower.includes('organize')) return Sparkles;
+  if (lower.includes('extract') || lower.includes('create') || lower.includes('organize')) return Sparkles;
   if (lower.includes('interpret') || lower.includes('inference')) return Lightbulb;
   if (lower.includes('clarify') || lower.includes('relation')) return Search;
   if (lower.includes('convert') || lower.includes('action')) return CheckCircle;
