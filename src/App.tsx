@@ -34,14 +34,14 @@ const frameworks: Framework[] = [
   {
     id: 'sense-making',
     title: 'Sense-Making',
-    content: 'Identify constant patterns within different situations or contexts → create symbolic representations → Structure ideas into interconnected frameworks → enable interpretation, inference, and evaluation.',
+    content: 'Identify constant patterns within different situations or contexts → create symbolic representations → structure ideas into interconnected frameworks → enable interpretation, inference, and evaluation.',
     accentColor: 'hsl(180 80% 45%)',
     Icon: Brain,
   },
   {
     id: 'critical-thinking',
     title: 'Critical Thinking',
-    content: 'Evaluate propositions, their probability, and the strength of supporting evidence → evaluate argument soundness and the relevance of evidence → Clarify the connections between claims, evidence, and conclusions.',
+    content: 'Evaluate propositions, their probability, and the strength of supporting evidence → evaluate argument soundness and the relevance of evidence → clarify the connections between claims, evidence, and conclusions.',
     accentColor: 'hsl(220 80% 55%)',
     Icon: Scale,
   },
@@ -62,7 +62,7 @@ const frameworks: Framework[] = [
   {
     id: 'self-reflection',
     title: 'Self-Reflection',
-    content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers within yourself → Translate insights into specific, measurable actions.',
+    content: 'Separate personal choices from external circumstances → identify recurring patterns and controllable levers within yourself → translate insights into specific, measurable actions.',
     accentColor: 'hsl(35 90% 50%)',
     Icon: UserCircle,
   },
@@ -76,14 +76,14 @@ const frameworks: Framework[] = [
   {
     id: 'self-discipline',
     title: 'Self-Discipline',
-    content: 'Establish priorities and goals → voluntarily inhibit wants → Carry out "shoulds" (necessary actions) despite internal resistance → ensure behavior aligns with long-term objectives.',
+    content: 'Establish priorities and goals → voluntarily inhibit wants → carry out "shoulds" (necessary actions) despite internal resistance → ensure behavior aligns with long-term objectives.',
     accentColor: 'hsl(210 20% 55%)',
     Icon: Shield,
   },
   {
     id: 'perseverance',
     title: 'Perseverance',
-    content: 'Stay committed to meaningful goals → push through fear-driven avoidance → Maintain consistent, goal-oriented effort → Through gradual exposure and deliberate skill-building.',
+    content: 'Stay committed to meaningful goals → push through fear-driven avoidance → maintain consistent, goal-oriented effort → through gradual exposure and deliberate skill-building.',
     accentColor: 'hsl(0 70% 50%)',
     Icon: Flame,
   },
