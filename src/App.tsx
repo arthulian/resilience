@@ -90,7 +90,6 @@ Icon: Flame,
 },
 ];
 
-// Icon mapping by frameworkId + step index — guaranteed icon for every step
 const stepIconMap: Record<string, React.ElementType[]> = {
 ‘sense-making’:      [Brain, Star, Network, Lightbulb],
 ‘critical-thinking’: [Scale, Search, Activity],
@@ -142,6 +141,12 @@ color: ‘#ffffff’,
 boxShadow: `0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30`,
 }}
 >
+<span
+className=“inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold flex-shrink-0”
+style={{ backgroundColor: accentColor, color: ‘#0f172a’ }}
+>
+{index + 1}
+</span>
 <StepIcon className=“w-4 h-4 flex-shrink-0” style={{ color: accentColor }} />
 <span className="text-base font-medium tracking-tight">{step}</span>
 </div>
@@ -166,7 +171,6 @@ framework: Framework;
 isOpen: boolean;
 onToggle: () => void;
 }) {
-// Trim whitespace and filter out any empty segments (e.g. from trailing periods)
 const steps = useMemo(
 () =>
 framework.content
@@ -288,7 +292,6 @@ const allExpanded = openCards.size === frameworks.length;
 
 return (
 <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-{/* Background decoration */}
 <div className="fixed inset-0 overflow-hidden pointer-events-none">
 <div
 className=“absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl”
@@ -306,7 +309,6 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
 
 ```
   <div className="relative z-10">
-    {/* Header */}
     <header className="pt-12 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
@@ -324,7 +326,6 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
       </div>
     </header>
 
-    {/* Control Buttons */}
     <div className="pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto flex justify-center gap-3">
         <button
@@ -348,7 +349,6 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
       </div>
     </div>
 
-    {/* Cards */}
     <main className="pb-16 px-4 sm:px-6 lg:px-8">
       <div className="space-y-6 max-w-5xl mx-auto">
         {frameworks.map((framework) => (
@@ -362,7 +362,6 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
       </div>
     </main>
 
-    {/* Footer */}
     <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div className="max-w-5xl mx-auto text-center">
         <p className="text-sm text-slate-500">
