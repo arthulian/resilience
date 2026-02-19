@@ -69,7 +69,7 @@ const frameworks: Framework[] = [
   {
     id: 'self-efficacy',
     title: 'Self-Efficacy',
-    content: 'Ground belief in past achievements → frame setbacks as temporary skill gaps (not fixed traits) → periodically reassess skills against objective competence.',
+    content: 'Ground belief in past achievements → frame setbacks as temporary skill gaps (not fixed traits) → periodically reassess skills against actual competence.',
     accentColor: 'hsl(140 70% 45%)',
     Icon: Target,
   },
