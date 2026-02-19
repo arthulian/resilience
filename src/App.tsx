@@ -1,3 +1,4 @@
+You’re right. The shorter version had condensed lines which could cause issues. Let me give you the full version here in plain text:
 import { useState, useMemo } from ‘react’;
 import {
 Brain,
@@ -22,7 +23,6 @@ Minimize,
 Network,
 } from ‘lucide-react’;
 import ‘./App.css’;
-
 interface Framework {
 id: string;
 title: string;
@@ -30,66 +30,64 @@ content: string;
 accentColor: string;
 Icon: React.ElementType;
 }
-
 const frameworks: Framework[] = [
 {
 id: ‘sense-making’,
 title: ‘Sense-Making’,
-content: ‘Identify constant patterns within different situations or contexts → create symbolic representations → structure ideas into interconnected frameworks → enable interpretation, inference, and evaluation.’,
+content: ‘Identify constant patterns within different situations or contexts -> create symbolic representations -> structure ideas into interconnected frameworks -> enable interpretation, inference, and evaluation.’,
 accentColor: ‘hsl(180 80% 45%)’,
 Icon: Brain,
 },
 {
 id: ‘critical-thinking’,
 title: ‘Critical Thinking’,
-content: ‘Evaluate propositions, their probability, and the strength of supporting evidence → evaluate argument soundness and the relevance of evidence → clarify the connections between claims, evidence, and conclusions.’,
+content: ‘Evaluate propositions, their probability, and the strength of supporting evidence -> evaluate argument soundness and the relevance of evidence -> clarify the connections between claims, evidence, and conclusions.’,
 accentColor: ‘hsl(220 80% 55%)’,
 Icon: Scale,
 },
 {
 id: ‘objectivity’,
 title: ‘Objectivity’,
-content: ‘Recognize inconsistent standards of evidence or underlying motives → uniformly apply empirical and rational criteria to all conclusions → through ongoing self-critique.’,
+content: ‘Recognize inconsistent standards of evidence or underlying motives -> uniformly apply empirical and rational criteria to all conclusions -> through ongoing self-critique.’,
 accentColor: ‘hsl(260 70% 55%)’,
 Icon: Eye,
 },
 {
 id: ‘fairness’,
 title: ‘Fairness’,
-content: ‘Weigh intent against harmful consequences → to determine fair accountability → in reciprocal interactions.’,
+content: ‘Weigh intent against harmful consequences -> to determine fair accountability -> in reciprocal interactions.’,
 accentColor: ‘hsl(320 70% 55%)’,
 Icon: Heart,
 },
 {
 id: ‘self-reflection’,
 title: ‘Self-Reflection’,
-content: ‘Separate personal choices from external circumstances → identify recurring patterns and controllable levers within yourself → translate insights into specific, measurable actions.’,
+content: ‘Separate personal choices from external circumstances -> identify recurring patterns and controllable levers within yourself -> translate insights into specific, measurable actions.’,
 accentColor: ‘hsl(35 90% 50%)’,
 Icon: UserCircle,
 },
 {
 id: ‘self-efficacy’,
 title: ‘Self-Efficacy’,
-content: ‘Ground belief in past achievements → frame setbacks as temporary skill gaps (not fixed traits) → periodically reassess skills against actual competence.’,
+content: ‘Ground belief in past achievements -> frame setbacks as temporary skill gaps (not fixed traits) -> periodically reassess skills against actual competence.’,
 accentColor: ‘hsl(140 70% 45%)’,
 Icon: Target,
 },
 {
 id: ‘self-discipline’,
 title: ‘Self-Discipline’,
-content: ‘Establish priorities and goals → voluntarily inhibit wants → carry out “shoulds” (necessary actions) despite internal resistance → ensure behavior aligns with long-term objectives.’,
+content: ‘Establish priorities and goals -> voluntarily inhibit wants -> carry out shoulds (necessary actions) despite internal resistance -> ensure behavior aligns with long-term objectives.’,
 accentColor: ‘hsl(210 20% 55%)’,
 Icon: Shield,
 },
 {
 id: ‘perseverance’,
 title: ‘Perseverance’,
-content: ‘Stay committed to meaningful goals → push through fear-driven avoidance → maintain consistent, goal-oriented effort → through gradual exposure and deliberate skill-building.’,
+content: ‘Stay committed to meaningful goals -> push through fear-driven avoidance -> maintain consistent, goal-oriented effort -> through gradual exposure and deliberate skill-building.’,
 accentColor: ‘hsl(0 70% 50%)’,
 Icon: Flame,
 },
 ];
-
 const stepIconMap: Record<string, React.ElementType[]> = {
 ‘sense-making’:      [Brain, Star, Network, Lightbulb],
 ‘critical-thinking’: [Scale, Search, Activity],
@@ -100,7 +98,6 @@ const stepIconMap: Record<string, React.ElementType[]> = {
 ‘self-discipline’:   [Shield, Shield, Flag, TrendingUp],
 ‘perseverance’:      [Flame, Zap, Flame, TrendingUp],
 };
-
 function getStepIcon(
 frameworkId: string,
 index: number,
@@ -108,7 +105,6 @@ fallback: React.ElementType
 ): React.ElementType {
 return stepIconMap[frameworkId]?.[index] ?? fallback;
 }
-
 function StepChip({
 step,
 index,
@@ -126,19 +122,18 @@ fallbackIcon: React.ElementType;
 }) {
 const StepIcon = getStepIcon(frameworkId, index, fallbackIcon);
 const isLast = index === totalSteps - 1;
-
 return (
 <div
 className=“flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 duration-400”
-style={{ animationDelay: `${index * 80}ms` }}
+style={{ animationDelay: ${index * 80}ms }}
 >
 <div
 className=“step-chip”
 style={{
-backgroundColor: `${accentColor}25`,
+backgroundColor: ${accentColor}25,
 borderColor: accentColor,
 color: ‘#ffffff’,
-boxShadow: `0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30`,
+boxShadow: 0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30,
 }}
 >
 <span
@@ -155,13 +150,12 @@ style={{ backgroundColor: accentColor, color: ‘#0f172a’ }}
 className=“arrow-connector text-xl font-bold”
 style={{ color: accentColor }}
 >
-↓
+down
 </span>
 )}
 </div>
 );
 }
-
 function FrameworkCard({
 framework,
 isOpen,
@@ -174,38 +168,36 @@ onToggle: () => void;
 const steps = useMemo(
 () =>
 framework.content
-.split(‘→’)
+.split(’->’)
 .map((s) => s.trim())
 .filter((s) => s.length > 0),
 [framework.content]
 );
-
 return (
 <div className="group">
 <div
-className={`framework-card rounded-2xl border-2 transition-all duration-300 overflow-hidden ${ isOpen ? 'expanded' : 'collapsed' }`}
+className={framework-card rounded-2xl border-2 transition-all duration-300 overflow-hidden ${ isOpen ? 'expanded' : 'collapsed' }}
 style={{
-borderColor: isOpen ? framework.accentColor : `${framework.accentColor}50`,
-backgroundColor: isOpen ? `${framework.accentColor}15` : `${framework.accentColor}08`,
+borderColor: isOpen ? framework.accentColor : ${framework.accentColor}50,
+backgroundColor: isOpen ? ${framework.accentColor}15 : ${framework.accentColor}08,
 boxShadow: isOpen
-? `0 0 50px -10px ${framework.accentColor}60, inset 0 1px 0 ${framework.accentColor}30`
-: `0 4px 25px -5px ${framework.accentColor}25, inset 0 1px 0 ${framework.accentColor}15`,
-[’–glow-color’ as string]: `${framework.accentColor}50`,
+? 0 0 50px -10px ${framework.accentColor}60, inset 0 1px 0 ${framework.accentColor}30
+: 0 4px 25px -5px ${framework.accentColor}25, inset 0 1px 0 ${framework.accentColor}15,
 }}
 >
 <button
 onClick={onToggle}
 className=“w-full p-5 sm:p-6 flex items-center justify-between gap-4 text-left”
 aria-expanded={isOpen}
-aria-controls={`content-${framework.id}`}
+aria-controls={content-${framework.id}}
 >
 <div className="flex items-center gap-4">
 <div
 className=“icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300”
 style={{
-backgroundColor: `${framework.accentColor}30`,
+backgroundColor: ${framework.accentColor}30,
 color: framework.accentColor,
-boxShadow: `0 0 20px -5px ${framework.accentColor}40`,
+boxShadow: 0 0 20px -5px ${framework.accentColor}40,
 }}
 >
 <framework.Icon className=“w-6 h-6 sm:w-7 sm:h-7” />
@@ -220,17 +212,16 @@ style={{ color: framework.accentColor }}
 <div
 className=“chevron-wrapper w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300”
 style={{
-backgroundColor: isOpen ? `${framework.accentColor}40` : `${framework.accentColor}15`,
+backgroundColor: isOpen ? ${framework.accentColor}40 : ${framework.accentColor}15,
 color: framework.accentColor,
 transform: isOpen ? ‘rotate(180deg)’ : ‘rotate(0deg)’,
-boxShadow: isOpen ? `0 0 15px -3px ${framework.accentColor}50` : ‘none’,
+boxShadow: isOpen ? 0 0 15px -3px ${framework.accentColor}50 : ‘none’,
 }}
 >
 <ChevronDown className="w-5 h-5" />
 </div>
 </button>
 
-```
     {isOpen && (
       <div
         id={`content-${framework.id}`}
@@ -260,14 +251,12 @@ boxShadow: isOpen ? `0 0 15px -3px ${framework.accentColor}50` : ‘none’,
     )}
   </div>
 </div>
-```
+
 
 );
 }
-
 function App() {
 const [openCards, setOpenCards] = useState<Set<string>>(new Set());
-
 const toggleCard = (id: string) => {
 setOpenCards((prev) => {
 const newSet = new Set(prev);
@@ -279,17 +268,13 @@ newSet.add(id);
 return newSet;
 });
 };
-
 const expandAll = () => {
 setOpenCards(new Set(frameworks.map((f) => f.id)));
 };
-
 const collapseAll = () => {
 setOpenCards(new Set());
 };
-
 const allExpanded = openCards.size === frameworks.length;
-
 return (
 <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
 <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -307,7 +292,6 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
 />
 </div>
 
-```
   <div className="relative z-10">
     <header className="pt-12 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center">
@@ -374,9 +358,8 @@ style={{ background: ‘radial-gradient(circle, hsl(260 70% 55% / 0.2), transpar
     </footer>
   </div>
 </div>
-```
+
 
 );
 }
-
-export default App;
+export default App;​​​​​​​​​​​​​​​​
