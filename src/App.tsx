@@ -178,7 +178,7 @@ backgroundColor: isOpen ? `${framework.accentColor}15` : `${framework.accentColo
 boxShadow: isOpen
 ? `0 0 50px -10px ${framework.accentColor}60, inset 0 1px 0 ${framework.accentColor}30`
 : `0 4px 25px -5px ${framework.accentColor}25, inset 0 1px 0 ${framework.accentColor}15`,
-[’–glow-color’ as string]: `${framework.accentColor}50`,
+[’–-glow-color’ as string]: `${framework.accentColor}50`,
 }}
 >
 <button
