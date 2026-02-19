@@ -139,12 +139,6 @@ function StepChip({
           boxShadow: `0 0 20px -8px ${accentColor}50, inset 0 1px 0 ${accentColor}30`,
         }}
       >
-        <span 
-          className="inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold flex-shrink-0"
-          style={{ backgroundColor: accentColor, color: '#0f172a' }}
-        >
-          {index + 1}
-        </span>
         {StepIcon && <StepIcon className="w-4 h-4 flex-shrink-0" style={{ color: accentColor }} />}
         <span className="text-base font-medium tracking-tight">{step.trim()}</span>
       </div>
