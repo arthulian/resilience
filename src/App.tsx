@@ -34,7 +34,7 @@ const frameworks: Framework[] = [
   {
     id: 'sense-making',
     title: 'Sense-Making',
-    content: 'Identify constant patterns within different situations or contexts → form symbolic representations that map out how different situations are interconnected to a larger framework → enable interpretation, inference, and evaluation.',
+    content: 'Identify constant patterns within different situations or contexts → form symbolic representations that map out how different situations are interconnected within a larger framework → enable interpretation, inference, and evaluation.',
     accentColor: 'hsl(180 80% 45%)',
     Icon: Brain,
   },
