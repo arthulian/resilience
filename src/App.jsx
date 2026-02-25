@@ -108,12 +108,12 @@ function App() {
           
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-              Outline of Principles
+              Outline of Goals
             </span>
           </h1>
           
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            A framework for critical thinking, ethical reasoning, and personal development
+            Goals for critical thinking, ethical reasoning, and personal development
           </p>
         </header>
 
@@ -205,7 +205,7 @@ function App() {
         {/* Footer */}
         <footer className="mt-12 text-center">
           <p className="text-slate-500 text-sm">
-            Outline of Principles — Structured thinking for better decision-making
+            Outline of Goals
           </p>
           <p className="text-slate-600 text-xs mt-2">
             Click any card to explore the principles
