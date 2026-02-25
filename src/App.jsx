@@ -70,8 +70,8 @@ const principles = [
     bgColor: 'bg-amber-500/10',
     borderColor: 'border-amber-500/30',
     items: [
-      { id: '5.1', text: 'Protect Boundaries via self-regulation.' },
-      { id: '5.2', text: 'Gradual and steady practice to normalize fear.' }
+      { id: '5.1', text: 'Manage emotional responses before they shape decisions.' },
+      { id: '5.2', text: 'Normalize discomfort through gradual, steady exposure.​​​​​​​​​​​​​​​​' }
     ]
   }
 ]
