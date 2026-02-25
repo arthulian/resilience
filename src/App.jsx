@@ -52,13 +52,13 @@ const principles = [
   },
   {
     id: 4,
-    title: 'Personal Development and Growth',
+    title: 'Self-efficacy and Growth',
     icon: Heart,
     color: '#ec4899',
     bgColor: 'bg-pink-500/10',
     borderColor: 'border-pink-500/30',
     items: [
-      { id: '4.1', text: 'Build on experiences; learn from errors.' },
+      { id: '4.1', text: 'Build upon experiences; learn from errors.' },
       { id: '4.2', text: 'Define values and align them with goals.' }
     ]
   },
