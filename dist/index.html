@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rational Fortitude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F5F5F0;
+      color: #1A1A1A;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F5F5F0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(85, 85, 85, 0.3);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(85, 85, 85, 0.5);
+    }
+
+    ::selection {
+      background: rgba(196, 164, 132, 0.3);
+      color: #1A1A1A;
+    }
+
+    /* Reveal animation */
+    .reveal-element {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal-element.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .reveal-element:nth-child(1) { transition-delay: 0s; }
+    .reveal-element:nth-child(2) { transition-delay: 0.1s; }
+    .reveal-element:nth-child(3) { transition-delay: 0.2s; }
+    .reveal-element:nth-child(4) { transition-delay: 0.3s; }
+    .reveal-element:nth-child(5) { transition-delay: 0.4s; }
+    .reveal-element:nth-child(6) { transition-delay: 0.5s; }
+    .reveal-element:nth-child(7) { transition-delay: 0.6s; }
+    .reveal-element:nth-child(8) { transition-delay: 0.7s; }
+
+    /* Hero animations */
+    .hero-title {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+    }
+
+    .hero-subtitle {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Layout */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-weight: 500;
+      color: #1A1A1A;
+      margin-bottom: 2rem;
+    }
+
+    .hero p {
+      font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+      color: #555555;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Content sections */
+    .content-section h2 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 500;
+      color: #1A1A1A;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .content-section h2:hover {
+      color: #C4A484;
+    }
+
+    .content-section h3 {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 400;
+      color: #555555;
+      margin-bottom: 2.5rem;
+    }
+
+    .content-section .intro {
+      font-size: 1.125rem;
+      color: #555555;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .content-section h4 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: #1A1A1A;
+      margin-bottom: 1.5rem;
+    }
+
+    .list-item {
+      margin-bottom: 2rem;
+    }
+
+    .list-item h5 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+    }
+
+    .list-item p {
+      font-size: 1rem;
+      color: #555555;
+      line-height: 1.7;
+    }
+
+    .quote {
+      margin-top: 4rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid #C4A484;
+    }
+
+    .quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-style: italic;
+      color: #1A1A1A;
+      line-height: 1.5;
+    }
+
+    /* Footer section */
+    .footer {
+      background-color: #1A1A1A;
+      min-height: 60vh;
+      text-align: center;
+    }
+
+    .footer p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: #F5F5F0;
+      line-height: 1.5;
+      margin-bottom: 3rem;
+    }
+
+    .footer .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: #888888;
+      margin-bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Rational Fortitude</h1>
+      <p class="hero-subtitle">A blueprint for constructing a resilient mental framework to navigate reality effectively.</p>
+    </div>
+  </section>
+
+  <!-- Section 1: The Foundation -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="reveal-element">The Foundation</h2>
+      <h3 class="reveal-element">Grounding in Reality</h3>
+      <p class="intro reveal-element">The first step in building mental strength is establishing a solid foundation based on objective truth. This requires a commitment to intellectual honesty and a willingness to confront reality as it is, not as we wish it to be.</p>
+      
+      <h4 class="reveal-element">4 Pillars of Truth</h4>
+      
+      <div class="list-item reveal-element">
+        <h5>1. Logical Chain</h5>
+        <p>Assertions must derive directly from supporting facts.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>2. Empirical Grounding</h5>
+        <p>Claims must be based on measurable, reproducible data.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>3. Graduated Confidence</h5>
+        <p>Your level of confidence should match the level of evidence.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>4. Falsifiability</h5>
+        <p>Actively seek counterevidence to test your own hypotheses.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: The Framework -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="reveal-element">The Framework</h2>
+      <h3 class="reveal-element">Mastering Your Mind</h3>
+      <p class="intro reveal-element">Once grounded in reality, the next step is to develop an internal framework for processing information and events. This framework acts as a filter, helping you interpret the world without being overwhelmed by it.</p>
+      
+      <h4 class="reveal-element">Internal Framework Principles</h4>
+      
+      <div class="list-item reveal-element">
+        <h5>1. Observer Mindset</h5>
+        <p>Cultivate the ability to observe your thoughts and emotions without immediate reaction.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>2. Locus of Control</h5>
+        <p>Focus your energy on what you can control, and accept what you cannot.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>3. Decoupling</h5>
+        <p>Separate your sense of self-worth from external outcomes and opinions.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>4. Value Consistency</h5>
+        <p>Align your actions with your core values, regardless of external pressure.</p>
+      </div>
+      
+      <div class="quote reveal-element">
+        <p>"Interpret setbacks as feedback rather than a reflection of self-worth."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Action & Reinforcement -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="reveal-element">Action & Reinforcement</h2>
+      <h3 class="reveal-element">Forging True Strength</h3>
+      <p class="intro reveal-element">Mental fortitude is not built through theory alone. It requires consistent action and the deliberate exposure to challenges that reinforce your resilience.</p>
+      
+      <h4 class="reveal-element">Reinforce Fortitude</h4>
+      
+      <div class="list-item reveal-element">
+        <h5>1. Self-Accountability</h5>
+        <p>Weigh immediate intentions against long-term consequences.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>2. Evidence-Based</h5>
+        <p>Proportion your confidence to your demonstrated competence.</p>
+      </div>
+      
+      <div class="list-item reveal-element">
+        <h5>3. Hormesis</h5>
+        <p>Use controlled exposure to challenges to enhance adaptability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <section class="footer">
+    <div class="container">
+      <p class="reveal-element">If uncertainty is guaranteed, what will you choose to build?</p>
+      <p class="copyright reveal-element">&copy; 2024 Rational Fortitude</p>
+    </div>
+  </section>
+
+  <script>
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const revealElements = document.querySelectorAll('.reveal-element');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      revealElements.forEach(function(element) {
+        observer.observe(element);
+      });
+    });
+  </script>
+</body>
+</html>
