@@ -272,7 +272,6 @@ function App() {
       >
         <div className="max-w-[800px] w-full text-center">
           <p className="reveal-element text-2xl md:text-3xl lg:text-4xl font-serif text-[#F5F5F0] leading-relaxed mb-12">
-            If uncertainty is guaranteed, what will you choose to build?
           </p>
           <p className="reveal-element text-sm text-[#888888] font-sans">
             © 2024 Rational Fortitude
