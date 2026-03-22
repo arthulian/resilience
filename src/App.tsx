@@ -72,7 +72,7 @@ function App() {
             Rational Fortitude
           </h1>
           <p className="text-lg md:text-xl text-[#555555] font-sans leading-relaxed max-w-[600px] mx-auto">
-            A blueprint for constructing a resilient mental framework to navigate reality effectively.
+            A blueprint for constructing a resilient mental framework.
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ function App() {
           
           <div className="reveal-element mb-8">
             <h4 className="text-2xl font-serif font-medium text-[#1A1A1A] mb-6">
-              4 Pillars of Truth
+              Pillars of Truth
             </h4>
           </div>
           
@@ -125,7 +125,7 @@ function App() {
                 3. Graduated Confidence
               </h5>
               <p className="text-base text-[#555555] font-sans leading-relaxed">
-                Your level of confidence should match the level of evidence.
+                Your degree of confidence should match the reliability of evidence.
               </p>
             </div>
             
@@ -171,7 +171,7 @@ function App() {
                 1. Observer Mindset
               </h5>
               <p className="text-base text-[#555555] font-sans leading-relaxed">
-                Cultivate the ability to observe your thoughts and emotions without immediate reaction.
+                Cultivate the ability to observe your thoughts and emotions without immediate judgement.
               </p>
             </div>
             
@@ -180,7 +180,7 @@ function App() {
                 2. Locus of Control
               </h5>
               <p className="text-base text-[#555555] font-sans leading-relaxed">
-                Focus your energy on what you can control, and accept what you cannot.
+                Focus your energy on your effort/work, not on what you cannot control.
               </p>
             </div>
             
@@ -189,7 +189,7 @@ function App() {
                 3. Decoupling
               </h5>
               <p className="text-base text-[#555555] font-sans leading-relaxed">
-                Separate your sense of self-worth from external outcomes and opinions.
+                Separate your sense of self-worth from setbacks and opinions.
               </p>
             </div>
             
@@ -205,7 +205,6 @@ function App() {
           
           <div className="reveal-element mt-16 pl-6 border-l-2 border-[#C4A484]">
             <p className="text-xl md:text-2xl font-serif italic text-[#1A1A1A] leading-relaxed">
-              "Interpret setbacks as feedback rather than a reflection of self-worth."
             </p>
           </div>
         </div>
