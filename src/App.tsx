@@ -95,7 +95,7 @@ function App() {
           
           <div className="reveal-element mb-8">
             <h4 className="text-2xl font-serif font-medium text-[#1A1A1A] mb-6">
-              Pillars of Truth
+              The Pillars
             </h4>
           </div>
           
@@ -157,7 +157,7 @@ function App() {
           
           <div className="reveal-element mb-8">
             <h4 className="text-2xl font-serif font-medium text-[#1A1A1A] mb-6">
-              Internal Framework Principles
+              The Principles
             </h4>
           </div>
           
@@ -224,7 +224,7 @@ function App() {
           
           <div className="reveal-element mb-8">
             <h4 className="text-2xl font-serif font-medium text-[#1A1A1A] mb-6">
-              Reinforce Fortitude
+              The Reinforcers
             </h4>
           </div>
           
