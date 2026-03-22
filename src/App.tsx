@@ -90,9 +90,7 @@ function App() {
             Grounding in Reality
           </h3>
           <p className="reveal-element text-lg text-[#555555] font-sans leading-relaxed mb-12">
-            The first step in building mental strength is establishing a solid foundation based on objective truth. 
-            This requires a commitment to intellectual honesty and a willingness to confront reality as it is, 
-            not as we wish it to be.
+            Before you can be strong, you must be honest. This phase uses a scientific approach to filter your beliefs.
           </p>
           
           <div className="reveal-element mb-8">
@@ -154,9 +152,7 @@ function App() {
             Mastering Your Mind
           </h3>
           <p className="reveal-element text-lg text-[#555555] font-sans leading-relaxed mb-12">
-            Once grounded in reality, the next step is to develop an internal framework for processing 
-            information and events. This framework acts as a filter, helping you interpret the world 
-            without being overwhelmed by it.
+            Once grounded, you build an internal filter to process the world without losing your cool.
           </p>
           
           <div className="reveal-element mb-8">
@@ -223,8 +219,7 @@ function App() {
             Forging True Strength
           </h3>
           <p className="reveal-element text-lg text-[#555555] font-sans leading-relaxed mb-12">
-            Mental fortitude is not built through theory alone. It requires consistent action and 
-            the deliberate exposure to challenges that reinforce your resilience.
+            Resilience isn't a thought—it's a muscle built through stress.
           </p>
           
           <div className="reveal-element mb-8">
