@@ -1,0 +1,90 @@
+/* Custom Fonts & Base Reset */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --bg-color: #F5F5F0;
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --accent: #C4A484;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Overrides */
+.font-serif {
+  font-family: 'DM+Serif+Display', serif;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Smooth Scrolling (Lenis Support) */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Layout & Reveal Styling */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-element {
+  opacity: 0; /* Managed by GSAP */
+  will-change: transform, opacity;
+}
+
+/* Specific Section Treatments */
+h2.reveal-element {
+  letter-spacing: -0.02em;
+}
+
+h3.reveal-element {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem !important;
+  font-weight: 600;
+}
+
+/* Custom Border/Accent for Phase Two */
+.bg-\[\#EAEAE2\] {
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Footer Contrast */
+footer, .bg-\[\#1A1A1A\] {
+  color: #F5F5F0;
+}
+
+.bg-\[\#1A1A1A\] .reveal-element {
+  color: #F5F5F0;
+}
